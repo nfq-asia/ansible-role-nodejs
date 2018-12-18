@@ -1,0 +1,9 @@
+
+- name: get dependencies for Nodejs installation
+  shell: "curl -sL https://deb.nodesource.com/setup_{{ nodejs_version }} | bash -"
+
+- name: "install Nodejs version {{ nodejs_version }}"
+  apt:
+    name: nodejs
+    state: present
+    update_cache: yes
