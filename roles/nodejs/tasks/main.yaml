@@ -1,8 +1,17 @@
 
-- name: get dependencies for Nodejs installation
-  shell: "curl -sL https://deb.nodesource.com/setup_{{ nodejs_version }} | bash -"
+- name: add Nodejs package signing key
+  apt_key:
+    url: "{{ nodesource_gpg_key_url }}"
+    keyring: "{{ nodesource_gpg_keyring }}"
 
-- name: "install Nodejs version {{ nodejs_version }}"
+- name: add desired Nodejs repository
+  apt_repository:
+    repo: "{{ item }}"
+    state: present
+    filename: "nodesource.list"
+  loop: "{{ nodesource_repo_url }}"
+
+- name: "install Nodejs {{ nodejs_version }}"
   apt:
     name: nodejs
     state: present
