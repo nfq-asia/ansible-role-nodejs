@@ -2,7 +2,8 @@
 - name: add Nodejs package signing key
   apt_key:
     url: "{{ nodesource_gpg_key_url }}"
-    keyring: "{{ nodesource_gpg_keyring }}"
+    #keyring: "{{ nodesource_gpg_keyring }}"
+    state: present
 
 - name: add desired Nodejs repository
   apt_repository:
