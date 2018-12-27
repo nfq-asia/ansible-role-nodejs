@@ -1,9 +1,8 @@
 # Nodejs provisioning on Debian/Ubuntu
 
--------------------------------------------------------------------------------------------------------------
-# How to use:
+## How to use:
 
-1. Add/edit Nodejs version roles/nodejs/vars/main.yaml
+1. Edit Nodejs version in vars/main.yaml
 
 2. Run ansible-playbook:
 ```

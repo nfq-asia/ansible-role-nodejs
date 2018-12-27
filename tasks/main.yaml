@@ -1,0 +1,23 @@
+---
+- name: ensure gpg available
+  apt:
+    name: gnupg
+    state: present
+    update_cache: true
+
+- name: "add Nodejs package signing key"
+  apt_key:
+    url: "{{ nodesource_gpg_key_url }}"
+    state: present
+
+- name: add desired Nodejs repository
+  apt_repository:
+    repo: "{{ item }}"
+    state: present
+    filename: "nodesource.list"
+  loop: "{{ nodesource_repo_url }}"
+
+- name: "install Nodejs {{ nodejs_version }}"
+  apt:
+    name: nodejs
+    state: present
