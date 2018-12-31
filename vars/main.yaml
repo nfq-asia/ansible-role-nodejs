@@ -1,6 +1,4 @@
 ---
-nodejs_version: 8.x
-
 nodesource_gpg_key_url: "https://deb.nodesource.com/gpgkey/nodesource.gpg.key"
 
 nodesource_repo_url:

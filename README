@@ -2,7 +2,7 @@
 
 ## How to use:
 
-1. Edit Nodejs version in vars/main.yaml
+1. Edit Nodejs version in defaults/main.yaml
 
 2. nodejs.yaml - playbook:
 
