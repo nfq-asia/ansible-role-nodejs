@@ -2,7 +2,7 @@
 
 ## How to use:
 
-1. Edit Nodejs version in defaults/main.yaml
+1. Edit Nodejs version in defaults/main.yaml or in the nodejs.yaml playbook
 
 2. nodejs.yaml - playbook:
 
@@ -12,7 +12,8 @@
   become: true
   roles:
   - ansible-nodejs
-
+  vars:
+    nodejs_version: 10.x
 
 3. Run ansible-playbook:
 
