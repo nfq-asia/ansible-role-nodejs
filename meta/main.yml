@@ -1,175 +1,46 @@
-    2019/06/27 14:04:36 [INFO] agent: Requesting shutdown
-    2019/06/27 14:04:36 [INFO] consul: shutting down client
-    2019/06/27 14:04:36 [WARN] serf: Shutdown without a Leave
-    2019/06/27 14:04:36 [INFO] manager: shutting down
-    2019/06/27 14:04:36 [INFO] agent: consul client down
-    2019/06/27 14:04:36 [INFO] agent: shutdown complete
-    2019/06/27 14:04:36 [INFO] agent: Stopping DNS server 0.0.0.0:8600 (tcp)
-    2019/06/27 14:04:36 [INFO] agent: Stopping DNS server 0.0.0.0:8600 (udp)
-    2019/06/27 14:04:36 [INFO] agent: Stopping HTTP server [::]:8500 (tcp)
-    2019/06/27 14:04:36 [INFO] agent: Waiting for endpoints to shut down
-    2019/06/27 14:04:36 [INFO] agent: Endpoints down
-    2019/06/27 14:04:36 [INFO] agent: Exit code: 1
-root@ubuntu14:/var/log# clear
-root@ubuntu14:/var/log# exit
-logout
-vagrant@ubuntu14:~$ exit
-logout
-Connection to 127.0.0.1 closed.
-Vys-iMac:vm_elk vytran$ vagrant destroy
-    ubuntu14: Are you sure you want to destroy the 'ubuntu14' VM? [y/N] y
-==> ubuntu14: Forcing shutdown of VM...
-==> ubuntu14: Destroying VM and associated drives...
-Vys-iMac:vm_elk vytran$ vagrant up
-Bringing machine 'ubuntu14' up with 'virtualbox' provider...
-==> ubuntu14: Importing base box 'bento/ubuntu-18.04'...
-==> ubuntu14: Matching MAC address for NAT networking...
-==> ubuntu14: Checking if box 'bento/ubuntu-18.04' is up to date...
-==> ubuntu14: A newer version of the box 'bento/ubuntu-18.04' for provider 'virtualbox' is
-==> ubuntu14: available! You currently have version '201812.15.0'. The latest is version
-==> ubuntu14: '201906.18.0'. Run `vagrant box update` to update.
-==> ubuntu14: Setting the name of the VM: vm_elk_ubuntu14_1561646735312_44820
-==> ubuntu14: Clearing any previously set network interfaces...
-==> ubuntu14: Preparing network interfaces based on configuration...
-    ubuntu14: Adapter 1: nat
-    ubuntu14: Adapter 2: hostonly
-==> ubuntu14: Forwarding ports...
-    ubuntu14: 22 (guest) => 2222 (host) (adapter 1)
-==> ubuntu14: Running 'pre-boot' VM customizations...
-==> ubuntu14: Booting VM...
-==> ubuntu14: Waiting for machine to boot. This may take a few minutes...
-    ubuntu14: SSH address: 127.0.0.1:2222
-    ubuntu14: SSH username: vagrant
-    ubuntu14: SSH auth method: private key
-    ubuntu14: Warning: Remote connection disconnect. Retrying...
-    ubuntu14: Warning: Connection reset. Retrying...
-    ubuntu14:
-    ubuntu14: Vagrant insecure key detected. Vagrant will automatically replace
-    ubuntu14: this with a newly generated keypair for better security.
-    ubuntu14:
-    ubuntu14: Inserting generated public key within guest...
-    ubuntu14: Removing insecure key from the guest if it's present...
-    ubuntu14: Key inserted! Disconnecting and reconnecting using new SSH key...
-==> ubuntu14: Machine booted and ready!
-==> ubuntu14: Checking for guest additions in VM...
-    ubuntu14: The guest additions on this VM do not match the installed version of
-    ubuntu14: VirtualBox! In most cases this is fine, but in rare cases it can
-    ubuntu14: prevent things such as shared folders from working properly. If you see
-    ubuntu14: shared folder errors, please make sure the guest additions within the
-    ubuntu14: virtual machine match the version of VirtualBox you have installed on
-    ubuntu14: your host and reload your VM.
-    ubuntu14:
-    ubuntu14: Guest Additions Version: 5.2.22
-    ubuntu14: VirtualBox Version: 6.0
-==> ubuntu14: Setting hostname...
-==> ubuntu14: Configuring and enabling network interfaces...
-==> ubuntu14: Mounting shared folders...
-    ubuntu14: /vagrant => /Users/vytran/Project/Ansible-Test/vm_elk
-==> ubuntu14: Running provisioner: ansible...
-Vagrant has automatically selected the compatibility mode '2.0'
-according to the Ansible version installed (2.8.1).
-
-Alternatively, the compatibility mode can be specified in your Vagrantfile:
-https://www.vagrantup.com/docs/provisioning/ansible_common.html#compatibility_mode
-
-    ubuntu14: Running ansible-playbook...
-
-PLAY [all] *********************************************************************
-
-TASK [Gathering Facts] *********************************************************
-ok: [ubuntu14]
-
-TASK [Update Cache] ************************************************************
- [WARNING]: Updating cache and auto-installing missing dependency: python-apt
-
- [WARNING]: Could not find aptitude. Using apt-get instead
-
-ok: [ubuntu14]
-
-TASK [Create user ubuntu] ******************************************************
-changed: [ubuntu14]
-
-TASK [Grant user sudo privilege] ***********************************************
-changed: [ubuntu14]
-
-PLAY RECAP *********************************************************************
-ubuntu14                   : ok=4    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
-
-Vys-iMac:vm_elk vytran$ vagrant ssh
-Welcome to Ubuntu 18.04.1 LTS (GNU/Linux 4.15.0-29-generic x86_64)
-
- * Documentation:  https://help.ubuntu.com
- * Management:     https://landscape.canonical.com
- * Support:        https://ubuntu.com/advantage
-
-  System information as of Thu Jun 27 15:28:39 UTC 2019
-
-  System load:  0.0               Processes:           92
-  Usage of /:   2.4% of 61.80GB   Users logged in:     0
-  Memory usage: 6%                IP address for eth0: 10.0.2.15
-  Swap usage:   0%                IP address for eth1: 192.168.33.11
-
-
-206 packages can be updated.
-110 updates are security updates.
-
-
-Last login: Thu Jun 27 14:47:04 2019 from 10.0.2.2
-vagrant@ubuntu14:~$ exit
-logout
-Connection to 127.0.0.1 closed.
-Vys-iMac:vm_elk vytran$ ls
-Vagrantfile		playbook.yml		roles			ubuntu14_disk1.vdi
-playbook.retry		playbookrole		ubuntu14_disk0.vdi
-Vys-iMac:vm_elk vytran$ git clone https://git.nfq.asia/devops/ansible-nodejs/tree/1.0.0
-Cloning into '1.0.0'...
-fatal: unable to update url base from redirection:
-  asked for: https://git.nfq.asia/devops/ansible-nodejs/tree/1.0.0/info/refs?service=git-upload-pack
-   redirect: https://git.nfq.asia/users/sign_in
-Vys-iMac:vm_elk vytran$ git clone https://git.nfq.asia/devops/ansible-nodejs
 galaxy_info:
-Cloning into 'ansible-nodejs'...
-warning: redirecting to https://git.nfq.asia/devops/ansible-nodejs.git/
-remote: Enumerating objects: 96, done.
-remote: Counting objects: 100% (96/96), done.
-remote: Compressing objects: 100% (59/59), done.
-remote: Total 96 (delta 29), reused 70 (delta 15)
-Unpacking objects: 100% (96/96), done.
-Vys-iMac:vm_elk vytran$ ls
-Vagrantfile		playbook.retry		playbookrole		ubuntu14_disk0.vdi
-ansible-nodejs		playbook.yml		roles			ubuntu14_disk1.vdi
-Vys-iMac:vm_elk vytran$ cd ansible-nodejs/
-Vys-iMac:ansible-nodejs vytran$ ls
-README		defaults	molecule	tasks		vars
-Vys-iMac:ansible-nodejs vytran$ mkdir meta
-Vys-iMac:ansible-nodejs vytran$ cd meta/
-Vys-iMac:meta vytran$ vi main.yml
-Vys-iMac:meta vytran$ git status
-On branch master
-Your branch is up to date with 'origin/master'.
+  author: your name
+  description: your description
+  company: your company (optional)
 
-Untracked files:
-  (use "git add <file>..." to include in what will be committed)
+  # If the issue tracker for your role is not on github, uncomment the
+  # next line and provide a value
+  # issue_tracker_url: http://example.com/issue/tracker
 
-	./
+  # Some suggested licenses:
+  # - BSD (default)
+  # - MIT
+  # - GPLv2
+  # - GPLv3
+  # - Apache
+  # - CC-BY
+  license: license (GPLv2, CC-BY, etc)
 
-nothing added to commit but untracked files present (use "git add" to track)
-Vys-iMac:meta vytran$ ls
-main.yml
-Vys-iMac:meta vytran$ cd ..
-Vys-iMac:ansible-nodejs vytran$ git add
-.git/       .gitignore  .yamllint   README      defaults/   meta/       molecule/   tasks/      vars/
-Vys-iMac:ansible-nodejs vytran$ git add meta/main.yml
-Vys-iMac:ansible-nodejs vytran$ git status
-On branch master
-Your branch is up to date with 'origin/master'.
+  min_ansible_version: 2.4
 
-Changes to be committed:
-  (use "git reset HEAD <file>..." to unstage)
+  # If this a Container Enabled role, provide the minimum Ansible Container version.
+  # min_ansible_container_version:
 
-	new file:   meta/main.yml
+  # Optionally specify the branch Galaxy will use when accessing the GitHub
+  # repo for this role. During role install, if no tags are available,
+  # Galaxy will use this branch. During import Galaxy will access files on
+  # this branch. If Travis integration is configured, only notifications for this
+  # branch will be accepted. Otherwise, in all cases, the repo's default branch
+  # (usually master) will be used.
+  #github_branch:
 
-Vys-iMac:ansible-nodejs vytran$ git commit -m "Add meta"
+  #
+  # Provide a list of supported platforms, and for each platform a list of versions.
+  # If you don't wish to enumerate all versions for a particular platform, use 'all'.
+  # To view available platforms and versions (or releases), visit:
+  # https://galaxy.ansible.com/api/v1/platforms/
+  #
+  # platforms:
+  # - name: Fedora
+  #   versions:
+  #   - all
+  #   - 25
+  # - name: SomePlatform
   #   versions:
   #   - all
   #   - 1.0
@@ -184,6 +55,6 @@ Vys-iMac:ansible-nodejs vytran$ git commit -m "Add meta"
     # NOTE: A tag is limited to a single word comprised of alphanumeric characters.
     #       Maximum 20 tags per role.
 
-dependencies:[]
-
-
+dependencies: []
+  # List your role dependencies here, one per line. Be sure to remove the '[]' above,
+  # if you add dependencies to this list.
