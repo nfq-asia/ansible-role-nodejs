@@ -1,23 +1,43 @@
 ---
-- name: ensure gpg available
+- name: "Ensure gpg available"
   apt:
     name: gnupg
     state: present
     update_cache: true
 
-- name: "add Nodejs package signing key"
+- name: "Add Nodejs package signing key"
   apt_key:
     url: "{{ nodesource_gpg_key_url }}"
     state: present
 
-- name: add desired Nodejs repository
+- name: "Add desired Nodejs repository"
   apt_repository:
     repo: "{{ item }}"
     state: present
     filename: "nodesource.list"
   loop: "{{ nodesource_repo_url }}"
 
-- name: "install Nodejs {{ nodejs_version }}"
+- name: "Install Nodejs {{ nodejs_version }}"
   apt:
     name: nodejs
     state: present
+
+- name: "Install NPM"
+  npm:
+    name: pm2
+    global: yes
+
+- name: "Create the node user"
+  user:
+    name: node
+    home: /var/node
+    create_home: true
+
+- name: "Initiate PM2 systemd service"
+  shell: pm2 startup systemd -u node --hp /var/node
+
+- name: "Enable PM2 systemd service"
+  service: 
+    name: pm2-node
+    enabled: true
+    state: started
